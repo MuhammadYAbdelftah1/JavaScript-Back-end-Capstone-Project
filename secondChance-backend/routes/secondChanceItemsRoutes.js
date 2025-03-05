@@ -1,20 +1,9 @@
 const express = require('express');
-const multer = require('multer');
 const router = express.Router();
+const { ObjectId } = require('mongodb');
 const { connectToDatabase } = require('../../models/db');
 
-// Set up multer for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
-});
-
-const upload = multer({ storage: storage });
-
+// GET route to retrieve items
 router.get('/', async (req, res) => {
   try {
     const db = await connectToDatabase();
@@ -25,12 +14,18 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Route to handle file upload
-router.post('/upload', upload.single('file'), async (req, res) => {
+// DELETE route to delete an item by ID
+router.delete('/:id', async (req, res) => {
   try {
-    const file = req.file;
-    // You can now save file information to the database if needed
-    res.status(200).json({ message: 'File uploaded successfully', file });
+    const db = await connectToDatabase();
+    const id = req.params.id;
+    const result = await db.collection('items').deleteOne({ _id: ObjectId(id) });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+
+    res.status(200).json({ message: 'Item deleted successfully' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

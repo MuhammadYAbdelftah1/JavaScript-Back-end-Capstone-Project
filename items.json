@@ -1,0 +1,18 @@
+[
+    { "name": "Bus 1", "category": "Luxury", "price": 500, "seats": 50 },
+    { "name": "Bus 2", "category": "Economy", "price": 300, "seats": 60 },
+    { "name": "Bus 3", "category": "Luxury", "price": 600, "seats": 40 },
+    { "name": "Bus 4", "category": "Economy", "price": 350, "seats": 55 },
+    { "name": "Bus 5", "category": "Luxury", "price": 700, "seats": 45 },
+    { "name": "Bus 6", "category": "Economy", "price": 400, "seats": 65 },
+    { "name": "Bus 7", "category": "Luxury", "price": 800, "seats": 35 },
+    { "name": "Bus 8", "category": "Economy", "price": 450, "seats": 70 },
+    { "name": "Bus 9", "category": "Luxury", "price": 900, "seats": 30 },
+    { "name": "Bus 10", "category": "Economy", "price": 500, "seats": 75 },
+    { "name": "Bus 11", "category": "Luxury", "price": 1000, "seats": 25 },
+    { "name": "Bus 12", "category": "Economy", "price": 550, "seats": 80 },
+    { "name": "Bus 13", "category": "Luxury", "price": 1100, "seats": 20 },
+    { "name": "Bus 14", "category": "Economy", "price": 600, "seats": 85 },
+    { "name": "Bus 15", "category": "Luxury", "price": 1200, "seats": 15 },
+    { "name": "Bus 16", "category": "Economy", "price": 650, "seats": 90 }
+  ]
