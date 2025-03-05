@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { ObjectId } = require('mongodb');
-const { connectToDatabase } = require('../../models/db');
-const { ObjectId } = require('mongodb');
+const { connectToDatabase } = require('../models/db'); // Ensure the correct path
+const multer = require('multer');
 
 // Set up multer for file uploads
 const storage = multer.diskStorage({
@@ -16,12 +16,26 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Define the /api/items route
+router.get('/api/items', async (req, res) => {
+  try {
+    const db = await connectToDatabase();
+    const items = await db.collection('items').find().toArray();
+    res.json(items);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Existing routes
 router.get('/', async (req, res) => {
   try {
     const db = await connectToDatabase();
     const items = await db.collection('items').find().toArray();
     res.json(items);
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -36,6 +50,7 @@ router.get('/items/:id', async (req, res) => {
       res.status(404).send('Item not found');
     }
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -53,6 +68,7 @@ router.delete('/:id', async (req, res) => {
 
     res.status(200).json({ message: 'Item deleted successfully' });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: err.message });
   }
 });

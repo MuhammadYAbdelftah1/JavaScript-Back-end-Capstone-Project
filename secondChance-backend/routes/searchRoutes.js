@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { connectToDatabase } = require('../../models/db');
 
-router.get('/', async (req, res) => {
+router.get('/suggestions', async (req, res) => { // Ensure the route matches your frontend request
   try {
     const db = await connectToDatabase();
     const query = req.query.q; // Get the search query from the URL
