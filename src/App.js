@@ -10,6 +10,7 @@ import MobileService from './MobileService';
 import DesktopService from './DesktopService';
 import DatabaseService from './DatabaseService';
 import SoftwareService from './SoftwareService';
+import UserProfile from './UserProfile';
 import Navbar from './Navbar';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/services/database" component={DatabaseService} />
         <Route path="/services/software" component={SoftwareService} />
         <Route path="/search" component={SearchResults} />
+        <Route path="/profile" component={UserProfile} />
       </Switch>
       <input
         type="text"

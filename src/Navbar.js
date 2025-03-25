@@ -31,6 +31,7 @@ function Navbar({ user }) {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/login">Login</Link></li>
         <li><Link to="/register">Register</Link></li>
+        <li><Link to="/profile">My Profile</Link></li>
         {user && <li>Welcome, {user.username}</li>}
         <li className="search-bar">
           <form onSubmit={handleSearch}>
