@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const itemsRouter = require('./routes/secondChanceItemsRoutes'); // Ensure the correct path
 const searchRouter = require('./routes/searchRoutes'); // Ensure the correct path
+const reviewRouter = require('./routes/reviewRoutes'); // Add review routes
 
 // Middleware to parse JSON requests
 app.use(express.json());
@@ -9,6 +10,7 @@ app.use(express.json());
 // Use the items router for item-related routes
 app.use('/api/items', itemsRouter);
 app.use('/api/search', searchRouter);
+app.use('/api/reviews', reviewRouter); // Add review routes
 
 // Example of other routes
 app.get('/', (req, res) => {
